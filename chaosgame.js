@@ -102,7 +102,6 @@ function Game() {
         } else {
             console.log("Too many vertices");
         }
-        console.log(vertexArray);
     };
 
     this.switchVertices = function() {
