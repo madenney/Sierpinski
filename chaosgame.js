@@ -9,6 +9,7 @@ function Game() {
     var turtle = document.getElementById("canvas").getContext("2d");
     var defaultVertexNumber = 7;
     var vertexArray = [];
+    var vLayer = 1;
     var lastPoint;
     var intervalId;
     var canvasWidth = canvas.css("width").slice(0,-2);
@@ -16,6 +17,7 @@ function Game() {
     var jumpRatio = 0.5;
     var speed = 25;
     var size = 10;
+    var switchChance = 20;
 
 
     // Draw a polygon, given starting points, number of sides, and width of shape
@@ -92,7 +94,6 @@ function Game() {
         lastPoint = [x,y];
     };
 
-    // What to do when the canvas is clicked
     this.clickedCanvas = function(clickX, clickY) {
 
         if(vertexArray.length < defaultVertexNumber) {
@@ -101,9 +102,9 @@ function Game() {
         } else {
             console.log("Too many vertices");
         }
+        console.log(vertexArray);
     };
 
-    // Switch between layers
     this.switchVertices = function() {
         if(vertexArray.length == 0) {return;}
         if(vLayer == 1) {
@@ -112,7 +113,6 @@ function Game() {
             vLayer = 1;
         }
     };
-
 
     this.start = function() {
         if(!intervalId){
