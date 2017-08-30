@@ -1,0 +1,207 @@
+
+body{
+    position: relative;
+}
+
+
+
+/* ------------------ Canvas ---------------------- */
+/* ------------------------------------------------ */
+
+#canvas-container {
+    height: 97vh;
+    border: solid black 2px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    float: right;
+    display: inline-block;
+    background-color: lightgray;
+    width: -webkit-fill-available;
+    position: absolute;
+    margin-left: 310px;
+    left: 0px;
+}
+
+
+/* ------------------ Settings -------------------- */
+/* ------------------------------------------------ */
+
+#settings-bar {
+    width: 300px;
+    height: 97vh;
+    background-color: lightblue;
+    border: solid black 2px;
+    border-radius: 5px;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    box-sizing: border-box;
+}
+button {
+    width: 50%;
+    height: 5%;
+    font-size: 200%;
+}
+
+#switch {
+    font-size: 175%;
+}
+
+.label {
+    font-size: 30px;
+}
+
+.value {
+    display: inline-block;
+    font-size: 30px;
+}
+
+.distance {
+    font-size: 22px;
+}
+
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 70%;
+    margin: 17.3px 0;
+    display: inline-block;
+    float: left;
+    margin-left: 10%;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3871a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0.9px 0.9px 1.7px #000000, 0px 0px 0.9px #0d0d0d;
+    border: 2px solid #000000;
+    height: 43px;
+    width: 23px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -17.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #4b88c3;
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3871a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0.9px 0.9px 1.7px #000000, 0px 0px 0.9px #0d0d0d;
+    border: 2px solid #000000;
+    height: 43px;
+    width: 23px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #2d5a87;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+    background: #3871a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+    box-shadow: 0.9px 0.9px 1.7px #000000, 0px 0px 0.9px #0d0d0d;
+    border: 2px solid #000000;
+    height: 43px;
+    width: 23px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+    height: 8.4px;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #3871a9;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #4b88c3;
+}
+
+/* ------------------ About Modal ----------------- */
+/* ------------------------------------------------ */
+
+.hidden {
+    display: none;
+}
+
+#about-modal{
+    position: absolute;
+    margin-top: 6vh;
+    margin-left: 12.5vw;
+    width: 75vw;
+    height:75vh;
+    border: solid black 10px;
+    border-radius: 2px;
+    background-color: lightblue;
+    text-align: center;
+}
+
+#about-exit{
+    font-size: 36px;
+    float: right;
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    border: solid black 2px;
+    border-radius: 2px;
+    background-color: lightcoral;
+}
+
+
+/* ------------------ Mobile Warning -------------- */
+/* ------------------------------------------------ */
+
+#mobile-warning{
+    display: none;
+}
+
+@media only screen and (max-width: 500px) {
+
+    #canvas-container, #settings-bar {
+        display: none;
+    }
+    #mobile-warning{
+        display: block;
+        width: 80%;
+        margin: 0px 10%;
+        height: 40vh;
+        text-align: center;
+        background-color: lightgray;
+        padding: 30px;
+        border: solid black 2px;
+        border-radius: 3px;
+    }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Sierpinski triangle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="chaosgame.js"></script>
+    <link href = "chaosgame.css" type = "text/css" rel = "stylesheet">
+    <script>
+
+
+    var game;
+    $(document).ready(function() {
+        var canvasWidth = $("#canvas-container").css("width");
+        var canvasHeight = $("#canvas-container").css("height");
+        canvasWidth = canvasWidth.substring(0, canvasWidth.indexOf("p"));
+        canvasHeight = canvasHeight.substring(0, canvasHeight.indexOf("p"));
+
+        var canvas = document.getElementById("canvas");
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+
+        game = new Game();
+        addClickListeners();
+
+    });
+
+    var addClickListeners = function() {
+        $("canvas").click(function(event) {
+            game.clickedCanvas(event.offsetX, event.offsetY);
+        });
+
+        $("#start").click(function() {
+            game.start();
+        });
+
+        $("#reset").click(function() {
+            game.reset();
+        });
+
+        $("#clear").click(function() {
+            game.clear();
+        });
+
+        $("#switch").click(function() {
+            game.switchVertices();
+        });
+
+        $("#speed").on('mouseup', function() {
+            var s = $(this).val();
+            if(s == 0) {s = 1;}
+            game.updateSpeed(s);
+            $(".speed").text(s);
+        });
+
+        $("#size").on('mouseup', function() {
+            var s = $(this).val();
+            if(s == 0) {s = 1;}
+            game.updateSize(s);
+            $(".size").text(s);
+        });
+
+        $("#distance").on('mouseup', function() {
+            var s = $(this).val();
+            if(s == 0) {s = 1;}
+            game.updateDistance(s);
+            $(".distance").text(s + "%");
+        });
+
+        $("#about").click(function() {
+            $("#about-modal").removeClass("hidden");
+        });
+
+        $("#about-exit").click(function() {
+            $("#about-modal").addClass("hidden");
+        });
+    }
+    </script>
+</head>
+<body>
+
+    <div id = "settings-bar">
+        <h1>Settings</h1>
+        <br>
+        <button id = "start">Start</button>
+        <br><br>
+        <button id = "clear"> Clear </button>
+        <br><br><br>
+        <div class = "label"> Speed: </div>
+        <br>
+        <input id = "speed" type = "range" value="75">
+        <br>
+        <div class = "value speed"> 75 </div>
+        <br><br><br>
+        <div class = "label"> Size: </div>
+        <br>
+        <input id = "size" type = "range" value="10">
+        <br>
+        <div class = "value size"> 10 </div>
+        <br><br><br>
+        <div class = "label"> Distance: </div>
+        <br>
+        <input id = "distance" type = "range" value="50">
+        <br>
+        <div class = "value distance"> 50% </div>
+        <br><br><br><br>
+        <button id = "reset"> Reset </button>
+        <br><br><br><br>
+        <button id = "about"> About </button>
+    </div>
+    <div id = "canvas-container">
+        <canvas id = "canvas"></canvas>
+    </div>
+    <div id="about-modal" class="hidden">
+        <div id="about-exit">X</div>
+        <h1>About</h1>
+        <h3> This application will make no sense unless you watch this video: </h3>
+        <iframe width="500" height="300" src="https://www.youtube.com/embed/kbKtFN71Lfs" frameborder="0" allowfullscreen></iframe>
+        <p> Instructions: Click anywhere on the gray box to draw a vertex.</p>
+        <p> Change the speed of drawing, the size of the points, and the midpoint distance using the sliders</p>
+        <br><br>
+        <p> I made this as a quick side project. I intend on doing more projects based off these videos in the future.</p>
+    </div>
+    <div id="mobile-warning">
+        <h1> This application is not supported on mobile devices. </h1>
+    </div>
+</body>
+</html>
