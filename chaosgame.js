@@ -9,7 +9,6 @@ function Game() {
     var turtle = document.getElementById("canvas").getContext("2d");
     var defaultVertexNumber = 7;
     var vertexArray = [];
-    var vLayer = 1;
     var lastPoint;
     var intervalId;
     var canvasWidth = canvas.css("width").slice(0,-2);
@@ -17,21 +16,9 @@ function Game() {
     var jumpRatio = 0.5;
     var speed = 25;
     var size = 10;
-    var switchChance = 20;
 
 
-    var drawSquare = function(x, y, width) {
-        var h = width/2;
-
-        turtle.beginPath();
-        turtle.moveTo(x - h, y - h);
-        turtle.lineTo(x + h, y - h);
-        turtle.lineTo(x + h, y + h);
-        turtle.lineTo(x - h, y + h);
-        turtle.lineTo(x - h, y - h);
-        turtle.stroke();
-    };
-
+    // Draw a polygon, given starting points, number of sides, and width of shape
     var drawPolygon = function(x, y, sideNum, width) {
 
         var innerAngle = 180 - (360/sideNum);
@@ -65,6 +52,9 @@ function Game() {
         turtle.stroke();
     };
 
+    // Function for drawing the next point
+    // Warning: There's still some leftover code from trying to add in different layers of vertices
+    // I'll get back to this at some point
     var drawNextPoint = function() {
         if(!lastPoint) {
             lastPoint = [500,500];
@@ -102,6 +92,7 @@ function Game() {
         lastPoint = [x,y];
     };
 
+    // What to do when the canvas is clicked
     this.clickedCanvas = function(clickX, clickY) {
 
         if(vertexArray.length < defaultVertexNumber) {
@@ -110,9 +101,9 @@ function Game() {
         } else {
             console.log("Too many vertices");
         }
-        console.log(vertexArray);
     };
 
+    // Switch between layers
     this.switchVertices = function() {
         if(vertexArray.length == 0) {return;}
         if(vLayer == 1) {
@@ -121,6 +112,7 @@ function Game() {
             vLayer = 1;
         }
     };
+
 
     this.start = function() {
         if(!intervalId){
