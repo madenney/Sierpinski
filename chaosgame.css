@@ -180,6 +180,10 @@ input[type=range]:focus::-ms-fill-upper {
     background-color: lightcoral;
 }
 
+#about-exit:hover{
+    cursor: pointer;
+    border: solid black 3px;
+}
 
 /* ------------------ Mobile Warning -------------- */
 /* ------------------------------------------------ */
