@@ -13,6 +13,18 @@
 
     var game;
     $(document).ready(function() {
+        resizeCanvas();
+        game = new Game();
+        addClickListeners();
+    });
+
+
+    $(window).resize(function(){
+        resizeCanvas();
+        game.reset();
+    });
+
+    function resizeCanvas() {
         var canvasWidth = $("#canvas-container").css("width");
         var canvasHeight = $("#canvas-container").css("height");
         canvasWidth = canvasWidth.substring(0, canvasWidth.indexOf("p"));
@@ -21,11 +33,7 @@
         var canvas = document.getElementById("canvas");
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
-
-        game = new Game();
-        addClickListeners();
-
-    });
+    }
 
     var addClickListeners = function() {
         $("canvas").click(function(event) {
@@ -107,7 +115,7 @@
         <div class = "value distance"> 50% </div>
         <br><br><br><br>
         <button id = "reset"> Reset </button>
-        <br><br><br><br>
+        <br><br>
         <button id = "about"> About </button>
     </div>
     <div id = "canvas-container">
